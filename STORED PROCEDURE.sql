@@ -1,34 +1,34 @@
 
-CREATE PROCEDURE sp_ListeleUlaþým
-    @kalkýþ_noktasý VARCHAR(250),
-    @varýþ_noktasý VARCHAR(250),
+CREATE PROCEDURE sp_ListeleUlasım
+    @kalkıs_noktası VARCHAR(250),
+    @varıs_noktası VARCHAR(250),
     @tarih DATE,
-    @baþlangýç_saati TIME,
+    @baþlangıc_saati TIME,
     @bitiþ_saati TIME
 AS
 BEGIN
-    SELECT * FROM ulaþým
-    WHERE kalkýþ_noktasý = @kalkýþ_noktasý
-    AND varýþ_noktasý = @varýþ_noktasý
-    AND kalkýþ_tarihi = @tarih
-    AND kalkýþ_saati BETWEEN @baþlangýç_saati AND @bitiþ_saati
+    SELECT * FROM ulasım
+    WHERE kalkýþ_noktasý = @kalkıs_noktası
+    AND varýþ_noktası = @varıs_noktası
+    AND kalkıs_tarihi = @tarih
+    AND kalkıs_saati BETWEEN @baslangıç_saati AND @bitis_saati
 END
-CREATE PROCEDURE sp_ListeleKiralýkEvler
-    @þehir_id INT,
-    @giriþ_tarihi DATE,
-    @çýkýþ_tarihi DATE,
-    @max_kiþi_sayýsý INT
+CREATE PROCEDURE sp_ListeleKiralıkEvler
+    @sehir_id INT,
+    @giris_tarihi DATE,
+    @cıkıs_tarihi DATE,
+    @max_kisi_sayısı INT
 AS
 BEGIN
-    SELECT * FROM kiralýk_evler
-    WHERE þehir_id = @þehir_id
-    AND giriþ_tarihi <= @giriþ_tarihi
-    AND çýkýþ_tarihi >= @çýkýþ_tarihi
-    AND max_kiþi_sayýsý >= @max_kiþi_sayýsý
+    SELECT * FROM kiralık_evler
+    WHERE sehir_id = @sehir_id
+    AND giris_tarihi <= @giris_tarihi
+    AND cıkıs_tarihi >= @cıkıs_tarihi
+    AND max_kisi_sayısı >= @max_kisi_sayısı
 END
-EXEC sp_ListeleUlaþým 'Ýstanbul', 'Ankara', '2024-05-20', '10:00:00', '14:00:00'
+EXEC sp_ListeleUlasım 'Istanbul', 'Ankara', '2024-05-20', '10:00:00', '14:00:00'
 
-EXEC sp_ListeleKiralýkEvler 1, '2024-07-01', '2024-07-15', 4
+EXEC sp_ListeleKiralıkEvler 1, '2024-07-01', '2024-07-15', 4
 
 
 
